@@ -99,7 +99,7 @@ function Home() {
             <div>
                 {
                     load ? (<Loader />) :
-                    !currentPokemons.length? (<NotFound />) :
+                    !allPokemons.length? (<NotFound />) :
                     currentPokemons?.map((el) => {
                         return (
                             <div key={el.id}>

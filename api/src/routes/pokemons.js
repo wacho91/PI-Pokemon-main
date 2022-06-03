@@ -48,5 +48,37 @@ router.post('/pokemons', async (req, res) => {
     } 
 })
 
+router.delete('/delete/:id', async(req,res) => {
+    const { id } = req.params;
+    try {
+        if (id) {
+           await Pokemon.destroy({
+                where: { id: id }
+            });
+            return res.send({ msg: 'Pokemon deleted' })
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+router.put('/update/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        if (id) {
+            const { img, name, types, hp, attack, defense, speed, weight, height, createdInDb } = req.body;
+            await Pokemon.update(
+                { img, name, types, hp, attack, defense, speed, weight, height, createdInDb },
+                { where: 
+                    { id: id } 
+                }
+            );
+            res.send("Pokemon updated successfully!");
+        } 
+    } catch (error){
+        console.log(error);
+    } 
+})
+
 
 module.exports = router;

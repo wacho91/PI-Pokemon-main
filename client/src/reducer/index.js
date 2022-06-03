@@ -76,6 +76,17 @@ function rootReducer (state = initialState, action) {
                 isLoading : true
             }
 
+        case 'GET_DETAILS':
+            return {
+                ...state,
+                detail: action.payload
+            }
+
+        case "DELETE_POKEMON":
+            return {
+                ...state
+            }
+
         default: return state;
     }
 }

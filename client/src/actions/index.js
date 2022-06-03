@@ -76,3 +76,46 @@ export function cleanPokemons() {
         payload: {}
     }
 }
+
+
+// export function getDetail(id) {
+//     return async function(dispatch) {
+//         try {
+//             let json = await axios.get('http://localhost:3001/pokemons/' + id);
+//             return {
+//                 type: 'GET_DETAILS',
+//                 payload: json.data
+//             }
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     }
+// }
+
+export function getDetail(id) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get('http://localhost:3001/pokemons/' + id);
+            return dispatch({
+                type: "GET_DETAILS",
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export function deletePokemon(id) {
+    return async function(dispatch) {
+        try {
+            const json = await axios.delete('/delete/' + id)
+            return dispatch({
+                type: "DELETE_POKEMON",
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
