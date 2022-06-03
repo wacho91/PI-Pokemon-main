@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filterPokemonsByTypes, filterPokemonsCreated, getPokemons, getTypes, orderAttack, orderByName } from '../../actions';
 import Card from '../Card/Card';
 import Pagination from '../Pagination/Pagination';
+import SearchBar from '../SearchBar/SearchBar';
 import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
 import { cleanPokemons } from '../../actions';
@@ -65,6 +66,9 @@ function Home() {
 
     return (
         <div>
+            <div>
+                <SearchBar />
+            </div>
             <div>
             {/* <button><h2>Filter by <p>&gt;</p> </h2></button> */}
             <select  onChange={e => handleFilterTypes(e)} value='disabled'>
